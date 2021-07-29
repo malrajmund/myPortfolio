@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import Navbar from "./components/Navbar/Navbar";
+import Landing from "./components/Landing/Landing";
+import { ThemeProvider, createTheme } from "@material-ui/core/styles";
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#EDEDED",
+    },
+    secondary: {
+      main: "#DA0037",
+    },
+    tertiary: {
+      main: "#444444",
+    },
+    dark: {
+      main: "#171717",
+    },
+  },
+});
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <ThemeProvider theme={theme}>
+        <Navbar />
+        <Landing />
+      </ThemeProvider>
+    </>
   );
 }
 
