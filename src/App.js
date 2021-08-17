@@ -1,5 +1,7 @@
 import Navbar from "./components/Navbar/Navbar";
 import Landing from "./components/Landing/Landing";
+import About from "./components/About/About";
+import Portfolio from "./components/Portfolio/Portfolio";
 import { ThemeProvider, createTheme } from "@material-ui/core/styles";
 
 const theme = createTheme({
@@ -25,6 +27,8 @@ function App() {
       <ThemeProvider theme={theme}>
         <Navbar />
         <Landing />
+        <About />
+        <Portfolio />
       </ThemeProvider>
     </>
   );

@@ -1,15 +1,18 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Grid } from "@material-ui/core";
-import Button from "@material-ui/core/Button";
-import image from "../img/face.png";
+import Button from "../Button/Button";
+import FacebookIcon from "@material-ui/icons/Facebook";
+import GitHubIcon from "@material-ui/icons/GitHub";
+import LinkedInIcon from "@material-ui/icons/LinkedIn";
+import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: "flex",
+    backgroundColor: theme.palette.primary.main,
   },
   aboutGrid: {
-    background: theme.palette.secondary.main,
+    backgroundColor: theme.palette.primary.main,
     width: "100%",
     height: "100vh",
   },
@@ -21,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     height: "100%",
   },
   header: {
-    marginTop: "150px",
+    marginTop: "50px",
     padding: "15% 0 0 0",
     fontWeight: "600",
     textAlign: "left",
@@ -29,8 +32,8 @@ const useStyles = makeStyles((theme) => ({
   },
   subheader: {
     fontWeight: "700",
-    fontSize: "20px",
-    margin: "0",
+    fontSize: "26px",
+    marginLeft: "0",
     paddingLeft: "4px",
     color: theme.palette.dark.main,
     animation: `$appear 2000ms`,
@@ -42,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
     animation: `$fromTop 1000ms`,
   },
   afterName: {
-    fontSize: "19px",
+    fontSize: "24px",
     marginTop: "20px",
     paddingLeft: "4px",
     animation: `$appear 2000ms`,
@@ -90,6 +93,34 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: "-40px",
     marginTop: "40px",
   },
+  media: {
+    textAlign: "center",
+    verticalAlign: "middle",
+    fontSize: "15px",
+    marginTop: "50px",
+    color: theme.palette.primary.main,
+    maxWidth: "100px",
+  },
+  mediaIcon: {
+    cursor: "pointer",
+    "&:hover": {
+      color: theme.palette.dark.main,
+      cursor: "pointer",
+    },
+  },
+  mediaBlock: {
+    backgroundColor: theme.palette.secondary.main,
+    marginTop: "50%",
+    paddingBottom: "30px",
+    width: "3%",
+    minHeight: "200px",
+    borderRadius: "10px 0 0 0",
+    position: "fixed",
+  },
+  arrowIcon: {
+    fontSize: "18px",
+    marginLeft: "10px",
+  },
   "@keyframes fromTop": {
     "0%": {
       opacity: 0,
@@ -136,6 +167,9 @@ const useStyles = makeStyles((theme) => ({
 
 const Landing = () => {
   const classes = useStyles();
+  function vhToPixels(vh) {
+    return Math.round(window.innerHeight / (100 / vh));
+  }
 
   return (
     <Grid
@@ -144,14 +178,15 @@ const Landing = () => {
       alignItems='flex-start'
       wrap='nowrap'
       justifyContent='flex-start'
+      className={classes.root}
     >
       <Grid
         item
-        xs={8}
-        sm={8}
-        md={8}
-        lg={8}
-        xl={8}
+        xs={10}
+        sm={10}
+        md={10}
+        lg={10}
+        xl={10}
         className={classes.titleGrid}
       >
         <Grid
@@ -171,22 +206,26 @@ const Landing = () => {
               spacing={0}
             >
               <Grid item lg={12} xl={12} className={classes.subheader}>
-                HELLO, I'M A
+                HELLO, MY NAME IS
               </Grid>
               <Grid item lg={12} xl={12} className={classes.name}>
-                JUNIOR FRONTEND DEVELOPER
+                RAJMUND MALEC.
               </Grid>
               <Grid item lg={12} xl={12} className={classes.afterName}>
-                Hi, my name is Rajmund Malec. Come and check my portfolio!
+                I'm a web developer. Come and check my portfolio!
               </Grid>
               <Grid item lg={12} xl={12} className={classes.button}>
                 <Button
-                  variant='contained'
                   color='secondary'
-                  style={{ borderRadius: "0 10px 0 10px" }}
-                >
-                  VIEW PORTFOLIO
-                </Button>
+                  text='VIEW PORTFOLIO'
+                  onClick={() =>
+                    window.scrollTo({
+                      top: vhToPixels(200),
+                      behavior: "smooth",
+                    })
+                  }
+                  icon={<ArrowForwardIcon className={classes.arrowIcon} />}
+                />
               </Grid>
               <Grid item lg={12} xl={12} className={classes.blocks}>
                 <Grid
@@ -214,17 +253,32 @@ const Landing = () => {
       </Grid>
       <Grid
         item
-        xs={4}
-        sm={4}
-        md={4}
-        lg={4}
-        xl={4}
+        xs={2}
+        sm={2}
+        md={2}
+        lg={2}
+        xl={2}
         className={classes.aboutGrid}
       >
-        <div className={classes.imageDiv}>
-          <img src={image} className={classes.image} alt='My face :O'></img>
-          <p style={{ color: "white" }}>It's me &#128513;</p>
-        </div>
+        <Grid
+          container
+          direction='column'
+          alignItems='flex-end'
+          justifyContent='center'
+          spacing={0}
+        >
+          <div className={classes.mediaBlock}>
+            <Grid item lg={12} xl={12} className={classes.media}>
+              <GitHubIcon className={classes.mediaIcon} />
+            </Grid>
+            <Grid item lg={12} xl={12} className={classes.media}>
+              <LinkedInIcon className={classes.mediaIcon} />
+            </Grid>
+            <Grid item lg={12} xl={12} className={classes.media}>
+              <FacebookIcon className={classes.mediaIcon} />
+            </Grid>
+          </div>
+        </Grid>
       </Grid>
     </Grid>
   );

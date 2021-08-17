@@ -1,25 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Typography from "@material-ui/core/Typography";
-import NavOption from "./NavOption";
 import NavIcon from "./NavIcon";
 import { Grid } from "@material-ui/core";
-import GitHubIcon from "@material-ui/icons/GitHub";
-import LinkedInIcon from "@material-ui/icons/LinkedIn";
-import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    //marginBottom: "20px",
-  },
+  root: {},
   menuButton: {
     marginRight: theme.spacing(2),
   },
   title: {
     fontWeight: "bold",
-    fontSize: "22px",
-    paddingTop: "15px",
+    fontSize: "25px",
+    paddingTop: "12px",
+  },
+  titleScrolled: {
+    fontWeight: "bold",
+    fontSize: "25px",
+    paddingTop: "12px",
   },
   titleGrid: {
     textAlign: "left",
@@ -51,21 +50,116 @@ const useStyles = makeStyles((theme) => ({
   appBar: {
     display: "flex",
     alignItems: "center",
+    paddingTop: "15px",
+    height: "80px",
+    backgroundColor: theme.palette.primary.main,
+    animation: `$showAppBar 400ms forwards`,
+  },
+  "@keyframes showAppBar": {
+    "0%": {
+      transform: "translateY(-100%)",
+    },
+    "100%": {
+      transform: "translateY(0%)",
+    },
+  },
+  scrolledAppBar: {
+    display: "flex",
+    alignItems: "center",
+    paddingTop: "15px",
+    height: "80px",
+    backgroundColor: theme.palette.primary.main,
+    animation: `$hideAppBar 400ms forwards`,
+  },
+  "@keyframes hideAppBar": {
+    "0%": {
+      transform: "translateY(0%)",
+      boxShadow: "0 3px 2px -2px gray",
+    },
+    "100%": {
+      transform: "translateY(-100%)",
+      boxShadow: "0 3px 2px -2px gray",
+    },
+  },
+  option: {
+    textAlign: "left",
+    verticalAlign: "middle",
+    fontWeight: "bold",
+    fontSize: "17px",
+    marginTop: "22px",
+    color: theme.palette.tertiary.main,
+    display: "inline-block",
+    "&:hover": {
+      color: theme.palette.dark.main,
+      cursor: "pointer",
+    },
+  },
+  currentOption: {
+    textAlign: "left",
+    verticalAlign: "middle",
+    fontWeight: "bold",
+    fontSize: "17px",
+    marginTop: "22px",
+    color: theme.palette.secondary.main,
+    display: "inline-block",
+    //textDecoration: "underline 2px",
+    textDecorationColor: theme.palette.secondary.main,
+    "&:hover": {
+      color: theme.palette.dark.main,
+      cursor: "pointer",
+    },
   },
 }));
 
-const navOptions = ["Home", "About", "Portfolio", "Contact"];
-
 const Navbar = () => {
-  const classes = useStyles();
+  const [scrolled, setScrolled] = useState(false);
+  const [scrolledHome, setScrolledHome] = useState(true);
+  const [scrolledAbout, setScrolledAbout] = useState(false);
+  const [scrolledPortfolio, setScrolledPortfolio] = useState(false);
+  const [scrolledContact, setScrolledContact] = useState(false);
+  const classes = useStyles(scrolled);
+  function vhToPixels(vh) {
+    return Math.round(window.innerHeight / (100 / vh));
+  }
+  const handleScroll = () => {
+    const offset = window.scrollY;
+    if (offset > 50) {
+      setScrolled(true);
+    } else {
+      setScrolled(false);
+    }
+    if (offset < vhToPixels(100) && offset < vhToPixels(200)) {
+      setScrolledHome(true);
+    } else {
+      setScrolledHome(false);
+    }
+    if (offset >= vhToPixels(100) && offset < vhToPixels(200)) {
+      setScrolledAbout(true);
+    } else {
+      setScrolledAbout(false);
+    }
+    if (offset >= vhToPixels(200) && offset < vhToPixels(300)) {
+      setScrolledPortfolio(true);
+    } else {
+      setScrolledPortfolio(false);
+    }
+    if (offset >= vhToPixels(300) && offset < vhToPixels(400)) {
+      setScrolledContact(true);
+    } else {
+      setScrolledContact(false);
+    }
+  };
 
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+  });
   return (
     <div className={classes.root}>
       <AppBar
         position='fixed'
         color='primary'
         elevation={0}
-        className={classes.appBar}
+        className={scrolled ? classes.scrolledAppBar : classes.appBar}
       >
         <Grid
           container
@@ -74,13 +168,13 @@ const Navbar = () => {
           wrap='nowrap'
           justifyContent='flex-start'
         >
-          <Grid item xs={8} sm={8} md={8} lg={8} xl={8}>
+          <Grid item xs={10} sm={10} md={10} lg={10} xl={11}>
             <Grid
               container
               direction='row'
               alignItems='flex-start'
               wrap='nowrap'
-              justifyContent='flex-start'
+              justifyContent='center'
             >
               <Grid
                 item
@@ -99,10 +193,12 @@ const Navbar = () => {
                 sm={2}
                 md={2}
                 lg={2}
-                xl={2}
+                xl={1}
                 className={classes.titleGrid}
               >
-                <Typography className={classes.title}>Rajmund</Typography>
+                <Typography
+                  className={scrolled ? classes.titleScrolled : classes.title}
+                ></Typography>
               </Grid>
               <Grid
                 item
@@ -110,7 +206,7 @@ const Navbar = () => {
                 sm={9}
                 md={9}
                 lg={9}
-                xl={9}
+                xl={10}
                 className={classes.titleGrid}
               >
                 <Grid
@@ -120,55 +216,101 @@ const Navbar = () => {
                   wrap='nowrap'
                   justifyContent='center'
                 >
-                  {navOptions.map((name, i) => (
-                    <Grid
-                      item
-                      xs={3}
-                      sm={3}
-                      md={3}
-                      lg={3}
-                      xl={3}
-                      className={classes.optionGrid}
-                      key={i}
+                  <Grid
+                    item
+                    xs={3}
+                    sm={3}
+                    md={3}
+                    lg={3}
+                    xl={3}
+                    className={classes.optionGrid}
+                  >
+                    <span
+                      className={
+                        scrolledHome ? classes.currentOption : classes.option
+                      }
+                      onClick={() =>
+                        window.scrollTo({
+                          top: vhToPixels(0),
+                          behavior: "smooth",
+                        })
+                      }
                     >
-                      <NavOption key={i} name={name} />
-                    </Grid>
-                  ))}
+                      Home
+                    </span>
+                  </Grid>
+                  <Grid
+                    item
+                    xs={3}
+                    sm={3}
+                    md={3}
+                    lg={3}
+                    xl={3}
+                    className={classes.optionGrid}
+                  >
+                    <span
+                      className={
+                        scrolledAbout ? classes.currentOption : classes.option
+                      }
+                      onClick={() =>
+                        window.scrollTo({
+                          top: vhToPixels(100),
+                          behavior: "smooth",
+                        })
+                      }
+                    >
+                      About
+                    </span>
+                  </Grid>
+                  <Grid
+                    item
+                    xs={3}
+                    sm={3}
+                    md={3}
+                    lg={3}
+                    xl={3}
+                    className={classes.optionGrid}
+                  >
+                    <span
+                      className={
+                        scrolledPortfolio
+                          ? classes.currentOption
+                          : classes.option
+                      }
+                      onClick={() =>
+                        window.scrollTo({
+                          top: vhToPixels(200),
+                          behavior: "smooth",
+                        })
+                      }
+                    >
+                      Portfolio
+                    </span>
+                  </Grid>
+                  <Grid
+                    item
+                    xs={3}
+                    sm={3}
+                    md={3}
+                    lg={3}
+                    xl={3}
+                    className={classes.optionGrid}
+                  >
+                    <span
+                      className={
+                        scrolledContact ? classes.currentOption : classes.option
+                      }
+                      onClick={() =>
+                        window.scrollTo({
+                          top: vhToPixels(300),
+                          behavior: "smooth",
+                        })
+                      }
+                    >
+                      Contact
+                    </span>
+                  </Grid>
                 </Grid>
-              </Grid>
-            </Grid>
-          </Grid>
-          <Grid
-            item
-            xs={4}
-            sm={4}
-            md={4}
-            lg={4}
-            xl={4}
-            className={classes.mediaGrid}
-          >
-            <Grid
-              container
-              direction='row'
-              justifyContent='center'
-              alignItems='center'
-              wrap='nowrap'
-            >
-              <Grid item lg={4} xl={4} className={classes.media}>
-                <GitHubIcon className={classes.mediaIcon} />
-              </Grid>
-              <Grid item lg={4} xl={4} className={classes.media}>
-                <LinkedInIcon className={classes.mediaIcon} />
-              </Grid>
-              <Grid item lg={4} xl={4} className={classes.media}>
-                <Button
-                  variant='outlined'
-                  color='primary'
-                  className={classes.mediaIcon}
-                  style={{ borderRadius: "0 10px 0 10px" }}
-                >
-                  Contact
-                </Button>
               </Grid>
             </Grid>
           </Grid>
