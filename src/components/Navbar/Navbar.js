@@ -6,7 +6,9 @@ import NavIcon from "./NavIcon";
 import { Grid } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
-  root: {},
+  root: {
+    opacity: 1,
+  },
   menuButton: {
     marginRight: theme.spacing(2),
   },
@@ -58,9 +60,11 @@ const useStyles = makeStyles((theme) => ({
   "@keyframes showAppBar": {
     "0%": {
       transform: "translateY(-100%)",
+      boxShadow: "0 3px 2px -2px gray",
     },
     "100%": {
       transform: "translateY(0%)",
+      //boxShadow: "0 3px 2px -2px gray",
     },
   },
   scrolledAppBar: {
@@ -101,8 +105,10 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "17px",
     marginTop: "22px",
     color: theme.palette.secondary.main,
+    background: theme.palette.gradient,
+    WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent",
     display: "inline-block",
-    //textDecoration: "underline 2px",
     textDecorationColor: theme.palette.secondary.main,
     "&:hover": {
       color: theme.palette.dark.main,
@@ -117,33 +123,38 @@ const Navbar = () => {
   const [scrolledAbout, setScrolledAbout] = useState(false);
   const [scrolledPortfolio, setScrolledPortfolio] = useState(false);
   const [scrolledContact, setScrolledContact] = useState(false);
+  const [scroll] = useState(window.scrollY);
   const classes = useStyles(scrolled);
   function vhToPixels(vh) {
     return Math.round(window.innerHeight / (100 / vh));
   }
+  var previousScroll = 0;
   const handleScroll = () => {
     const offset = window.scrollY;
-    if (offset > 50) {
+
+    if (previousScroll <= offset) {
       setScrolled(true);
+      previousScroll = offset;
     } else {
       setScrolled(false);
+      previousScroll = offset;
     }
     if (offset < vhToPixels(100) && offset < vhToPixels(200)) {
       setScrolledHome(true);
     } else {
       setScrolledHome(false);
     }
-    if (offset >= vhToPixels(100) && offset < vhToPixels(200)) {
+    if (offset >= vhToPixels(100) && offset < vhToPixels(160)) {
       setScrolledAbout(true);
     } else {
       setScrolledAbout(false);
     }
-    if (offset >= vhToPixels(200) && offset < vhToPixels(300)) {
+    if (offset >= vhToPixels(160) && offset < vhToPixels(240)) {
       setScrolledPortfolio(true);
     } else {
       setScrolledPortfolio(false);
     }
-    if (offset >= vhToPixels(300) && offset < vhToPixels(400)) {
+    if (offset >= vhToPixels(240) && offset < vhToPixels(400)) {
       setScrolledContact(true);
     } else {
       setScrolledContact(false);
@@ -152,7 +163,8 @@ const Navbar = () => {
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
-  });
+    // eslint-disable-next-line
+  }, [scroll]);
   return (
     <div className={classes.root}>
       <AppBar
@@ -279,7 +291,7 @@ const Navbar = () => {
                       }
                       onClick={() =>
                         window.scrollTo({
-                          top: vhToPixels(200),
+                          top: vhToPixels(160),
                           behavior: "smooth",
                         })
                       }

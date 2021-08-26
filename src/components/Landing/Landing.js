@@ -32,20 +32,22 @@ const useStyles = makeStyles((theme) => ({
   },
   subheader: {
     fontWeight: "700",
-    fontSize: "26px",
+    fontSize: "40px",
     marginLeft: "0",
     paddingLeft: "4px",
-    color: theme.palette.dark.main,
+    background: theme.palette.gradient,
+    WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent",
     animation: `$appear 2000ms`,
   },
   name: {
-    fontSize: "50px",
+    fontSize: "80px",
     fontWeight: "600",
-    color: theme.palette.secondary.main,
+    color: theme.palette.dark.main,
     animation: `$fromTop 1000ms`,
   },
   afterName: {
-    fontSize: "24px",
+    fontSize: "40px",
     marginTop: "20px",
     paddingLeft: "4px",
     animation: `$appear 2000ms`,
@@ -58,7 +60,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "15em",
   },
   firstBlock: {
-    backgroundColor: theme.palette.secondary.main,
+    background: theme.palette.gradient,
     width: "1250px",
     position: "absolute",
     height: "60px",
@@ -104,15 +106,15 @@ const useStyles = makeStyles((theme) => ({
   mediaIcon: {
     cursor: "pointer",
     "&:hover": {
-      color: theme.palette.dark.main,
+      color: theme.palette.tertiary.main,
       cursor: "pointer",
     },
   },
   mediaBlock: {
-    backgroundColor: theme.palette.secondary.main,
-    marginTop: "50%",
-    paddingBottom: "30px",
-    width: "3%",
+    background: theme.palette.dark.main,
+    paddingBottom: "50px",
+    marginBottom: "10px",
+    width: "2%",
     minHeight: "200px",
     borderRadius: "10px 0 0 0",
     position: "fixed",
@@ -206,10 +208,10 @@ const Landing = () => {
               spacing={0}
             >
               <Grid item lg={12} xl={12} className={classes.subheader}>
-                HELLO, MY NAME IS
+                Hi, my name is
               </Grid>
               <Grid item lg={12} xl={12} className={classes.name}>
-                RAJMUND MALEC.
+                Rajmund Malec.
               </Grid>
               <Grid item lg={12} xl={12} className={classes.afterName}>
                 I'm a web developer. Come and check my portfolio!
@@ -217,7 +219,7 @@ const Landing = () => {
               <Grid item lg={12} xl={12} className={classes.button}>
                 <Button
                   color='secondary'
-                  text='VIEW PORTFOLIO'
+                  text='View portfolio'
                   onClick={() =>
                     window.scrollTo({
                       top: vhToPixels(200),
@@ -263,21 +265,24 @@ const Landing = () => {
         <Grid
           container
           direction='column'
-          alignItems='flex-end'
-          justifyContent='center'
+          alignItems='center'
+          justifyContent='flex-end'
           spacing={0}
+          style={{ height: "100%" }}
         >
-          <div className={classes.mediaBlock}>
-            <Grid item lg={12} xl={12} className={classes.media}>
-              <GitHubIcon className={classes.mediaIcon} />
-            </Grid>
-            <Grid item lg={12} xl={12} className={classes.media}>
-              <LinkedInIcon className={classes.mediaIcon} />
-            </Grid>
-            <Grid item lg={12} xl={12} className={classes.media}>
-              <FacebookIcon className={classes.mediaIcon} />
-            </Grid>
-          </div>
+          <Grid item xl={3} style={{ marginBottom: "50px" }}>
+            <div className={classes.mediaBlock}>
+              <Grid item lg={12} xl={12} className={classes.media}>
+                <GitHubIcon className={classes.mediaIcon} />
+              </Grid>
+              <Grid item lg={12} xl={12} className={classes.media}>
+                <LinkedInIcon className={classes.mediaIcon} />
+              </Grid>
+              <Grid item lg={12} xl={12} className={classes.media}>
+                <FacebookIcon className={classes.mediaIcon} />
+              </Grid>
+            </div>
+          </Grid>
         </Grid>
       </Grid>
     </Grid>

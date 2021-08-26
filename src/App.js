@@ -2,15 +2,16 @@ import Navbar from "./components/Navbar/Navbar";
 import Landing from "./components/Landing/Landing";
 import About from "./components/About/About";
 import Portfolio from "./components/Portfolio/Portfolio";
+import Contact from "./components/Contact/Contact";
 import { ThemeProvider, createTheme } from "@material-ui/core/styles";
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#EDEDED",
+      main: "#ffffff",
     },
     secondary: {
-      main: "#DA0037",
+      main: "#c471ed",
     },
     tertiary: {
       main: "#444444",
@@ -18,6 +19,7 @@ const theme = createTheme({
     dark: {
       main: "#171717",
     },
+    gradient: "linear-gradient(to right, #12c2e9, #c471ed, #f64f59)",
   },
 });
 
@@ -29,6 +31,7 @@ function App() {
         <Landing />
         <About />
         <Portfolio />
+        <Contact />
       </ThemeProvider>
     </>
   );

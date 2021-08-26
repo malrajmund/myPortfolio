@@ -7,6 +7,7 @@ const useStyles = makeStyles((theme) => ({
   projectContainer: {
     marginTop: "20px",
     marginBottom: "50px",
+    marginLeft: "25%",
   },
   img: {
     borderRadius: "100%",
@@ -16,7 +17,9 @@ const useStyles = makeStyles((theme) => ({
   title: {
     fontSize: "20px",
     fontWeight: "700",
-    color: theme.palette.secondary.main,
+    background: theme.palette.gradient,
+    WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent",
     marginBottom: "5px",
   },
   date: {
@@ -28,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.dark.main,
     textAlign: "justify",
     textJustify: "inter-word",
-    fontWeight: "400",
+    fontWeight: "500",
     fontSize: "17px",
   },
   ref: {

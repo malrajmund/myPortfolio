@@ -14,3 +14,16 @@ html,
 body {
   height: 100%;
 }
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fff;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 15px;
+  background: linear-gradient(#12c2e9, #c471ed, #f64f59);
+}

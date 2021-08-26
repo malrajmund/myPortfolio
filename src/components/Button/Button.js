@@ -3,10 +3,10 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   button: {
-    backgroundColor: ({ color }) =>
+    background: ({ color }) =>
       color === "primary"
         ? theme.palette.primary.main
-        : theme.palette.secondary.main,
+        : theme.palette.dark.main,
     color: ({ color }) =>
       color === "primary"
         ? theme.palette.tertiary.main
@@ -21,8 +21,8 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     flexWrap: "wrap",
-    fontSize: "14px",
-    fontWeight: "700",
+    fontSize: "20px",
+    fontWeight: "600",
     transition: "all .5s ease-in-out",
     "&:hover": {
       cursor: "pointer",
@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
     },
     "100%": {
       borderRadius: "10px 0 10px 0",
-      backgroundColor: theme.palette.dark.main,
+      background: theme.palette.gradient,
     },
   },
 }));
