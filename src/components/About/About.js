@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     float: "right",
   },
   title: {
-    fontSize: "30px",
+    fontSize: "40px",
     fontWeight: "600",
     marginBottom: "50px",
     marginTop: "50px",

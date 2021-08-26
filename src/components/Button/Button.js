@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     flexWrap: "wrap",
-    fontSize: "20px",
+    fontSize: "16px",
     fontWeight: "600",
     transition: "all .5s ease-in-out",
     "&:hover": {
@@ -40,6 +40,9 @@ const useStyles = makeStyles((theme) => ({
       background: theme.palette.gradient,
     },
   },
+  icon: {
+    margin: "5px 0 0 5px",
+  },
 }));
 
 const Button = ({ color, text, icon, ...props }) => {
@@ -47,7 +50,7 @@ const Button = ({ color, text, icon, ...props }) => {
   return (
     <button className={classes.button} {...props}>
       {text}
-      {icon ? <span>{icon}</span> : null}
+      {icon ? <span className={classes.icon}>{icon}</span> : null}
     </button>
   );
 };

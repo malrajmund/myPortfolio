@@ -8,7 +8,7 @@ import fotorental from "../Resources/img/fotorental.png";
 const useStyles = makeStyles((theme) => ({
   titleGrid: {
     width: "100%",
-    height: "100vh",
+    height: "80vh",
     backgroundColor: theme.palette.primary.main,
   },
   bar: {
@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     float: "left",
   },
   title: {
-    fontSize: "30px",
+    fontSize: "40px",
     fontWeight: "600",
     marginBottom: "50px",
     color: theme.palette.tertiary.main,
@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
     margin: "2px 0 0 2px",
     borderRadius: "5px 0 5px 0",
   },
-  xd: {
+  titleDiv: {
     float: "right",
   },
   projectContainer: {
@@ -62,7 +62,7 @@ const Portfolio = () => {
           className={classes.infoContainer}
         >
           <Grid item md={12} lg={12} xl={12} className={classes.title}>
-            <div className={classes.xd}>
+            <div className={classes.titleDiv}>
               RECENT PROJECTS
               <hr className={classes.underline}></hr>
             </div>
