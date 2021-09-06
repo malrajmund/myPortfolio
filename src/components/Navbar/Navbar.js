@@ -4,6 +4,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Typography from "@material-ui/core/Typography";
 import NavIcon from "./NavIcon";
 import { Grid } from "@material-ui/core";
+import MenuIcon from "@material-ui/icons/Menu";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,6 +26,9 @@ const useStyles = makeStyles((theme) => ({
   titleGrid: {
     textAlign: "left",
     verticalAlign: "middle",
+    [theme.breakpoints.down("sm")]: {
+      display: "none",
+    },
   },
   optionGrid: {
     maxWidth: "200px",
@@ -56,6 +60,9 @@ const useStyles = makeStyles((theme) => ({
     height: "80px",
     backgroundColor: theme.palette.primary.main,
     animation: `$showAppBar 400ms forwards`,
+    [theme.breakpoints.down("sm")]: {
+      height: "10%",
+    },
   },
   "@keyframes showAppBar": {
     "0%": {
@@ -114,6 +121,20 @@ const useStyles = makeStyles((theme) => ({
       color: theme.palette.dark.main,
       cursor: "pointer",
     },
+  },
+  menu: {
+    display: "none",
+    "@media (orientation: portrait)": {
+      marginTop: "5px",
+      marginRight: "15px",
+      display: "block",
+      float: "right",
+      minWidth: "50px",
+      minHeight: "50px",
+    },
+  },
+  menuContainer: {
+    //marginLeft: "50px",
   },
 }));
 
@@ -180,7 +201,7 @@ const Navbar = () => {
           wrap='nowrap'
           justifyContent='flex-start'
         >
-          <Grid item xs={10} sm={10} md={10} lg={10} xl={11}>
+          <Grid item xs={12} sm={10} md={10} lg={10} xl={11}>
             <Grid
               container
               direction='row'
@@ -199,6 +220,7 @@ const Navbar = () => {
               >
                 <NavIcon />
               </Grid>
+
               <Grid
                 item
                 xs={2}
@@ -211,6 +233,17 @@ const Navbar = () => {
                 <Typography
                   className={scrolled ? classes.titleScrolled : classes.title}
                 ></Typography>
+              </Grid>
+              <Grid
+                item
+                xs={11}
+                sm={11}
+                md={11}
+                lg={11}
+                xl={11}
+                className={classes.menuContainer}
+              >
+                <MenuIcon className={classes.menu} />
               </Grid>
               <Grid
                 item

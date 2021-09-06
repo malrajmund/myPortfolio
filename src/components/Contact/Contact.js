@@ -46,24 +46,36 @@ const Contact = () => {
       className={classes.titleGrid}
       wrap='nowrap'
     >
-      <Grid item md={6} lg={6} xl={12} className={classes.title}>
+      <Grid item xs={6} sm={6} md={6} lg={6} xl={12} className={classes.title}>
         <Grid
           container
           direction='row'
           alignItems='center'
           justifyContent='center'
         >
-          <Grid item xl={12}>
+          <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
             CONTACT
           </Grid>
           <Grid
             item
+            xs={12}
+            sm={12}
+            md={12}
+            lg={12}
             xl={12}
             style={{ display: "flex", justifyContent: "center" }}
           >
             <hr className={classes.underline}></hr>
           </Grid>
-          <Grid item md={12} lg={12} xl={12} className={classes.text}>
+          <Grid
+            item
+            xs={12}
+            sm={12}
+            md={12}
+            lg={12}
+            xl={12}
+            className={classes.text}
+          >
             <p>
               Want to cooperate?
               <br /> Let me know and contact via email! <br /> I will respond as
@@ -72,6 +84,10 @@ const Contact = () => {
           </Grid>
           <Grid
             item
+            xs={12}
+            sm={12}
+            md={12}
+            lg={12}
             xl={12}
             style={{ display: "flex", justifyContent: "center" }}
           >

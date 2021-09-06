@@ -30,8 +30,6 @@ function App() {
         <Navbar />
         <Landing />
         <About />
-        <Portfolio />
-        <Contact />
       </ThemeProvider>
     </>
   );

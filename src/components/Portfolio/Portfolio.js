@@ -54,20 +54,28 @@ const Portfolio = () => {
       justifyContent='flex-start'
       className={classes.titleGrid}
     >
-      <Grid item md={6} lg={6} xl={8}>
+      <Grid item xs={6} sm={6} md={6} lg={6} xl={8}>
         <Grid
           container
           alignItems='center'
           justifyContent='center'
           className={classes.infoContainer}
         >
-          <Grid item md={12} lg={12} xl={12} className={classes.title}>
+          <Grid
+            item
+            xs={12}
+            sm={12}
+            md={12}
+            lg={12}
+            xl={12}
+            className={classes.title}
+          >
             <div className={classes.titleDiv}>
               RECENT PROJECTS
               <hr className={classes.underline}></hr>
             </div>
           </Grid>
-          <Grid item md={12} lg={12} xl={8}>
+          <Grid item xs={12} sm={12} md={12} lg={12} xl={8}>
             {" "}
             <div className={classes.projectContainer}>
               <Project
@@ -96,7 +104,7 @@ const Portfolio = () => {
           </Grid>
         </Grid>
       </Grid>
-      <Grid item md={6} lg={6} xl={6}></Grid>
+      <Grid item xs={6} sm={6} md={6} lg={6} xl={6}></Grid>
     </Grid>
   );
 };

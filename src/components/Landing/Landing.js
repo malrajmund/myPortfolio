@@ -10,11 +10,17 @@ import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.primary.main,
+    [theme.breakpoints.down("md")]: {
+      marginTop: "25%",
+    },
   },
   aboutGrid: {
     backgroundColor: theme.palette.primary.main,
     width: "100%",
     height: "100vh",
+    [theme.breakpoints.down("md")]: {
+      display: "none",
+    },
   },
   titleGrid: {
     width: "100%",
@@ -22,6 +28,10 @@ const useStyles = makeStyles((theme) => ({
   },
   headerContainer: {
     height: "100%",
+    [theme.breakpoints.down("md")]: {
+      marginTop: "10%",
+      marginLeft: "20px",
+    },
   },
   header: {
     marginTop: "50px",
@@ -39,18 +49,34 @@ const useStyles = makeStyles((theme) => ({
     WebkitBackgroundClip: "text",
     WebkitTextFillColor: "transparent",
     animation: `$appear 2000ms`,
+    [theme.breakpoints.down("md")]: {
+      marginLeft: "10px",
+      paddingLeft: "2px",
+      fontSize: "25px",
+    },
   },
   name: {
     fontSize: "80px",
     fontWeight: "600",
     color: theme.palette.dark.main,
     animation: `$fromTop 1000ms`,
+    [theme.breakpoints.down("md")]: {
+      marginTop: "10px",
+      marginLeft: "10px",
+      fontSize: "40px",
+    },
   },
   afterName: {
     fontSize: "40px",
     marginTop: "20px",
     paddingLeft: "4px",
     animation: `$appear 2000ms`,
+    [theme.breakpoints.down("md")]: {
+      marginLeft: "10px",
+      paddingLeft: "2px",
+      fontSize: "25px",
+      marginTop: "10px",
+    },
   },
   button: {
     marginTop: "30px",
@@ -66,6 +92,9 @@ const useStyles = makeStyles((theme) => ({
     height: "60px",
     animation: `$firstBlockMoving 10s infinite`,
     borderRadius: "0 10px 0 0",
+    [theme.breakpoints.down("md")]: {
+      display: "none",
+    },
   },
   secondBlock: {
     backgroundColor: theme.palette.dark.main,
@@ -74,6 +103,9 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
     animation: `$secondBlockMoving 10s infinite`,
     borderRadius: "0 10px 0 0",
+    [theme.breakpoints.down("md")]: {
+      display: "none",
+    },
   },
   scrollText: {
     marginLeft: "500px",
@@ -199,7 +231,15 @@ const Landing = () => {
           direction='column'
           className={classes.headerContainer}
         >
-          <Grid item lg={12} xl={12} className={classes.header}>
+          <Grid
+            item
+            xs={12}
+            sm={12}
+            md={12}
+            lg={12}
+            xl={12}
+            className={classes.header}
+          >
             <Grid
               container
               direction='column'
@@ -207,16 +247,48 @@ const Landing = () => {
               justifyContent='center'
               spacing={0}
             >
-              <Grid item lg={12} xl={12} className={classes.subheader}>
+              <Grid
+                item
+                xs={12}
+                sm={12}
+                md={12}
+                lg={12}
+                xl={12}
+                className={classes.subheader}
+              >
                 Hi, my name is
               </Grid>
-              <Grid item lg={12} xl={12} className={classes.name}>
+              <Grid
+                item
+                xs={12}
+                sm={12}
+                md={12}
+                lg={12}
+                xl={12}
+                className={classes.name}
+              >
                 Rajmund Malec.
               </Grid>
-              <Grid item lg={12} xl={12} className={classes.afterName}>
+              <Grid
+                item
+                xs={12}
+                sm={12}
+                md={12}
+                lg={12}
+                xl={12}
+                className={classes.afterName}
+              >
                 I'm a web developer. Come and check my portfolio!
               </Grid>
-              <Grid item lg={12} xl={12} className={classes.button}>
+              <Grid
+                item
+                xs={12}
+                sm={12}
+                md={12}
+                lg={12}
+                xl={12}
+                className={classes.button}
+              >
                 <Button
                   color='secondary'
                   text='View portfolio'
@@ -229,7 +301,15 @@ const Landing = () => {
                   icon={<ArrowForwardIcon className={classes.arrowIcon} />}
                 />
               </Grid>
-              <Grid item lg={12} xl={12} className={classes.blocks}>
+              <Grid
+                item
+                xs={12}
+                sm={12}
+                md={12}
+                lg={12}
+                xl={12}
+                className={classes.blocks}
+              >
                 <Grid
                   container
                   direction='column'
@@ -237,10 +317,10 @@ const Landing = () => {
                   justifyContent='center'
                   spacing={3}
                 >
-                  <Grid item lg={12} xl={12}>
+                  <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                     <div className={classes.firstBlock}></div>
                   </Grid>
-                  <Grid item lg={12} xl={12}>
+                  <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                     <div className={classes.secondBlock}>
                       <p className={classes.scrollText}>
                         Scroll down to explore.
@@ -270,15 +350,47 @@ const Landing = () => {
           spacing={0}
           style={{ height: "100%" }}
         >
-          <Grid item xl={3} style={{ marginBottom: "50px" }}>
+          <Grid
+            item
+            xs={3}
+            sm={3}
+            md={3}
+            lg={3}
+            xl={3}
+            style={{ marginBottom: "50px" }}
+          >
             <div className={classes.mediaBlock}>
-              <Grid item lg={12} xl={12} className={classes.media}>
+              <Grid
+                item
+                xs={12}
+                sm={12}
+                md={12}
+                lg={12}
+                xl={12}
+                className={classes.media}
+              >
                 <GitHubIcon className={classes.mediaIcon} />
               </Grid>
-              <Grid item lg={12} xl={12} className={classes.media}>
+              <Grid
+                item
+                xs={12}
+                sm={12}
+                md={12}
+                lg={12}
+                xl={12}
+                className={classes.media}
+              >
                 <LinkedInIcon className={classes.mediaIcon} />
               </Grid>
-              <Grid item lg={12} xl={12} className={classes.media}>
+              <Grid
+                item
+                xs={12}
+                sm={12}
+                md={12}
+                lg={12}
+                xl={12}
+                className={classes.media}
+              >
                 <FacebookIcon className={classes.mediaIcon} />
               </Grid>
             </div>
