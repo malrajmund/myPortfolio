@@ -8,6 +8,10 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "20px",
     marginBottom: "50px",
     marginLeft: "25%",
+    [theme.breakpoints.down("md")]: {
+      marginLeft: "0%",
+      paddingLeft: "15px",
+    },
   },
   img: {
     borderRadius: "100%",
@@ -71,31 +75,49 @@ const Project = ({
       justifyContent='flex-start'
       className={classes.projectContainer}
     >
-      <Grid item md={12} lg={12} xl={12}>
+      <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
         <Grid
           container
           direction='row'
           alignItems='flex-start'
           justifyContent='flex-start'
         >
-          <Grid item md={1} lg={1} xl={1}>
+          <Grid item xs={1} sm={1} md={1} lg={1} xl={1}>
             <img src={image} alt={"foto"} className={classes.img}></img>
           </Grid>
-          <Grid item md={6} lg={6} xl={6}>
+          <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
             <Grid
               container
               direction='row'
               alignItems='flex-start'
               justifyContent='flex-start'
             >
-              <Grid item md={12} lg={12} xl={12} className={classes.title}>
+              <Grid
+                item
+                xs={12}
+                sm={12}
+                md={12}
+                lg={12}
+                xl={12}
+                className={classes.title}
+              >
                 {title}
               </Grid>
-              <Grid item md={12} lg={12} xl={12} className={classes.date}>
+              <Grid
+                item
+                xs={12}
+                sm={12}
+                md={12}
+                lg={12}
+                xl={12}
+                className={classes.date}
+              >
                 {years}
               </Grid>
               <Grid
                 item
+                xs={11}
+                sm={11}
                 md={12}
                 lg={12}
                 xl={12}
@@ -105,6 +127,8 @@ const Project = ({
               </Grid>
               <Grid
                 item
+                xs={12}
+                sm={12}
                 md={12}
                 lg={12}
                 xl={12}
@@ -120,6 +144,8 @@ const Project = ({
                     <Grid
                       key={index}
                       item
+                      xs={6}
+                      sm={6}
                       md={3}
                       lg={3}
                       xl={3}
@@ -131,7 +157,7 @@ const Project = ({
                   ))}
                 </Grid>
               </Grid>
-              <Grid item md={12} lg={12} xl={12}>
+              <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                 <a href={demo} className={classes.ref}>
                   DEMO
                 </a>{" "}

@@ -27,7 +27,8 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "50px",
     color: theme.palette.tertiary.main,
     [theme.breakpoints.down("md")]: {
-      fontSize: "25px",
+      fontSize: "35px",
+      marginLeft: "5%",
     },
   },
   infoContainer: {
@@ -87,7 +88,7 @@ const About = () => {
       className={classes.titleGrid}
       wrap='nowrap'
     >
-      <Grid item xs={12} sm={12} md={12} lg={6} xl={4} className={classes.info}>
+      <Grid item xs={12} sm={12} md={12} lg={6} xl={6} className={classes.info}>
         <Grid
           container
           alignItems='center'

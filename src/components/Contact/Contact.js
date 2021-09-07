@@ -9,6 +9,9 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     height: "80vh",
     backgroundColor: theme.palette.primary.main,
+    [theme.breakpoints.down("md")]: {
+      marginTop: "100%",
+    },
   },
   title: {
     fontSize: "40px",
@@ -17,6 +20,10 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     display: "flex",
     justifyContent: "center",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "35px",
+      marginLeft: "5%",
+    },
   },
   underline: {
     background: theme.palette.gradient,
@@ -32,6 +39,10 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "19px",
     marginLeft: "40%",
     marginRight: "40%",
+    [theme.breakpoints.down("md")]: {
+      marginLeft: "0%",
+      marginRight: "0%",
+    },
   },
 }));
 

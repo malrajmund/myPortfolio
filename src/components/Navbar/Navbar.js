@@ -131,10 +131,17 @@ const useStyles = makeStyles((theme) => ({
       float: "right",
       minWidth: "50px",
       minHeight: "50px",
+      "&:hover": {
+        color: theme.palette.dark.main,
+        cursor: "pointer",
+      },
     },
   },
   menuContainer: {
-    //marginLeft: "50px",
+    display: "none",
+    [theme.breakpoints.down("md")]: {
+      display: "block",
+    },
   },
 }));
 

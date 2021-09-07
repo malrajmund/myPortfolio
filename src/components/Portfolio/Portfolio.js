@@ -10,6 +10,9 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     height: "80vh",
     backgroundColor: theme.palette.primary.main,
+    [theme.breakpoints.down("md")]: {
+      marginTop: "200%",
+    },
   },
   bar: {
     width: "30%",
@@ -24,6 +27,10 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: "50px",
     color: theme.palette.tertiary.main,
     float: "right",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "30px",
+      float: "left",
+    },
   },
   infoContainer: {
     //paddingLeft: "25%",
@@ -38,6 +45,11 @@ const useStyles = makeStyles((theme) => ({
   },
   titleDiv: {
     float: "right",
+    [theme.breakpoints.down("md")]: {
+      float: "left",
+      marginLeft: "10%",
+      textAlign: "center",
+    },
   },
   projectContainer: {
     float: "right",
@@ -54,7 +66,7 @@ const Portfolio = () => {
       justifyContent='flex-start'
       className={classes.titleGrid}
     >
-      <Grid item xs={6} sm={6} md={6} lg={6} xl={8}>
+      <Grid item xs={12} sm={12} md={6} lg={6} xl={8}>
         <Grid
           container
           alignItems='center'
