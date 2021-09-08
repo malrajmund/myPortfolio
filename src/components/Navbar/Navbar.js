@@ -56,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
   appBar: {
     display: "flex",
     alignItems: "center",
-    paddingTop: "15px",
+    //paddingTop: "15px",
     height: "80px",
     backgroundColor: theme.palette.primary.main,
     animation: `$showAppBar 400ms forwards`,
@@ -103,6 +103,14 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       color: theme.palette.dark.main,
       cursor: "pointer",
+      textDecoration: "underline 2px",
+      textDecorationColor: theme.palette.gradient,
+    },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "25px",
+      marginTop: "50px",
+      marginLeft: "5%",
+      textAlign: "center",
     },
   },
   currentOption: {
@@ -121,8 +129,14 @@ const useStyles = makeStyles((theme) => ({
       color: theme.palette.dark.main,
       cursor: "pointer",
     },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "25px",
+      marginTop: "50px",
+      marginLeft: "5%",
+      textAlign: "center",
+    },
   },
-  menu: {
+  menuIcon: {
     display: "none",
     "@media (orientation: portrait)": {
       marginTop: "5px",
@@ -131,6 +145,8 @@ const useStyles = makeStyles((theme) => ({
       float: "right",
       minWidth: "50px",
       minHeight: "50px",
+      zIndex: "10",
+      position: "relative",
       "&:hover": {
         color: theme.palette.dark.main,
         cursor: "pointer",
@@ -143,6 +159,62 @@ const useStyles = makeStyles((theme) => ({
       display: "block",
     },
   },
+  menuContainerOpen: {
+    display: "none",
+    [theme.breakpoints.down("md")]: {
+      display: "block",
+    },
+    "&::after": {
+      content: '" "',
+      display: "block",
+      height: "100vh",
+      width: "100vh",
+      marginLeft: "-100px",
+      position: "absolute",
+      backdropFilter: "blur(3px)",
+    },
+  },
+  menuOpen: {
+    display: "block",
+    height: "110vh",
+    width: "500px",
+    backgroundColor: "white",
+    paddingTop: "100px",
+    animation: `$showMenu 400ms forwards`,
+    zIndex: "9",
+    position: "absolute",
+  },
+  menuClosed: {
+    display: "block",
+    height: "110vh",
+    width: "500px",
+    backgroundColor: "white",
+    paddingTop: "100px",
+    zIndex: "9",
+    position: "absolute",
+    animation: `$hideMenu 400ms forwards`,
+  },
+  "@keyframes showMenu": {
+    "0%": {
+      transform: "translateX(100%)",
+      boxShadow: "-5px 0 5px -5px #333",
+    },
+    "100%": {
+      transform: "translateX(25%)",
+      boxShadow: "-5px 0 5px -5px #333",
+    },
+  },
+  "@keyframes hideMenu": {
+    "0%": {
+      transform: "translateX(25%)",
+      boxShadow: "-5px 0 5px -5px #333",
+    },
+    "100%": {
+      transform: "translateX(100%)",
+      boxShadow: "-5px 0 5px -5px #333",
+      display: "none",
+    },
+  },
 }));
 
 const Navbar = () => {
@@ -152,6 +224,7 @@ const Navbar = () => {
   const [scrolledPortfolio, setScrolledPortfolio] = useState(false);
   const [scrolledContact, setScrolledContact] = useState(false);
   const [scroll] = useState(window.scrollY);
+  const [menuClicked, setMenuClicked] = useState(false);
   const classes = useStyles(scrolled);
   function vhToPixels(vh) {
     return Math.round(window.innerHeight / (100 / vh));
@@ -159,7 +232,7 @@ const Navbar = () => {
   var previousScroll = 0;
   const handleScroll = () => {
     const offset = window.scrollY;
-
+    setMenuClicked(false);
     if (previousScroll <= offset) {
       setScrolled(true);
       previousScroll = offset;
@@ -199,7 +272,11 @@ const Navbar = () => {
         position='fixed'
         color='primary'
         elevation={0}
-        className={scrolled ? classes.scrolledAppBar : classes.appBar}
+        className={
+          scrolled && menuClicked === false
+            ? classes.scrolledAppBar
+            : classes.appBar
+        }
       >
         <Grid
           container
@@ -248,9 +325,89 @@ const Navbar = () => {
                 md={11}
                 lg={11}
                 xl={11}
-                className={classes.menuContainer}
+                className={
+                  menuClicked
+                    ? classes.menuContainerOpen
+                    : classes.menuContainer
+                }
               >
-                <MenuIcon className={classes.menu} />
+                <MenuIcon
+                  className={classes.menuIcon}
+                  onClick={(e) => setMenuClicked(!menuClicked)}
+                />
+                <div
+                  className={
+                    menuClicked ? classes.menuOpen : classes.menuClosed
+                  }
+                >
+                  <ul style={{ listStyleType: "none" }}>
+                    <li>
+                      <span
+                        className={
+                          scrolledHome ? classes.currentOption : classes.option
+                        }
+                        onClick={() =>
+                          window.scrollTo({
+                            top: vhToPixels(0),
+                            behavior: "smooth",
+                          })
+                        }
+                      >
+                        Home
+                      </span>
+                    </li>
+                    <li>
+                      <span
+                        className={
+                          scrolledAbout ? classes.currentOption : classes.option
+                        }
+                        onClick={() =>
+                          window.scrollTo({
+                            top: vhToPixels(100),
+                            behavior: "smooth",
+                          })
+                        }
+                      >
+                        About
+                      </span>
+                    </li>
+                    <li>
+                      <span
+                        className={
+                          scrolledPortfolio
+                            ? classes.currentOption
+                            : classes.option
+                        }
+                        onClick={() =>
+                          window.scrollTo({
+                            top: vhToPixels(160),
+                            behavior: "smooth",
+                          })
+                        }
+                      >
+                        Portfolio
+                      </span>
+                    </li>
+                    <li>
+                      {" "}
+                      <span
+                        className={
+                          scrolledContact
+                            ? classes.currentOption
+                            : classes.option
+                        }
+                        onClick={() =>
+                          window.scrollTo({
+                            top: vhToPixels(300),
+                            behavior: "smooth",
+                          })
+                        }
+                      >
+                        Contact
+                      </span>
+                    </li>
+                  </ul>
+                </div>
               </Grid>
               <Grid
                 item

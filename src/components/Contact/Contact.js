@@ -22,7 +22,6 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     [theme.breakpoints.down("md")]: {
       fontSize: "35px",
-      marginLeft: "5%",
     },
   },
   underline: {
