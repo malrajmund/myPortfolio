@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     height: "80vh",
     backgroundColor: theme.palette.primary.main,
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("xs")]: {
       marginTop: "200%",
     },
   },

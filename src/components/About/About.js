@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     height: "80vh",
     backgroundColor: theme.palette.primary.main,
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("xs")]: {
       flexWrap: "wrap",
     },
   },
@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.tertiary.main,
     [theme.breakpoints.down("md")]: {
       fontSize: "35px",
-      marginLeft: "5%",
+      marginLeft: "0%",
     },
   },
   infoContainer: {
@@ -36,8 +36,9 @@ const useStyles = makeStyles((theme) => ({
   },
   info: {
     marginLeft: "25%",
-    [theme.breakpoints.down("md")]: {
-      marginLeft: "5%",
+    [theme.breakpoints.down("xs")]: {
+      paddingLeft: "10%",
+      marginLeft: "0%",
     },
   },
   text: {
@@ -68,8 +69,12 @@ const useStyles = makeStyles((theme) => ({
   imgContainer: {
     marginLeft: "50px",
     marginTop: "5%",
-    [theme.breakpoints.down("md")]: {
-      marginLeft: "25%",
+    [theme.breakpoints.only("sm")]: {
+      marginTop: "15%",
+      marginLeft: "0px",
+    },
+    [theme.breakpoints.down("xs")]: {
+      paddingLeft: "10%",
     },
   },
   technologyList: {
@@ -88,7 +93,7 @@ const About = () => {
       className={classes.titleGrid}
       wrap='nowrap'
     >
-      <Grid item xs={12} sm={12} md={12} lg={6} xl={6} className={classes.info}>
+      <Grid item xs={10} sm={8} md={12} lg={6} xl={6} className={classes.info}>
         <Grid
           container
           alignItems='center'
@@ -166,7 +171,7 @@ const About = () => {
       <Grid
         item
         xs={12}
-        sm={12}
+        sm={4}
         md={12}
         lg={12}
         xl={12}

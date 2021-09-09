@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
   titleGrid: {
     textAlign: "left",
     verticalAlign: "middle",
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("xs")]: {
       display: "none",
     },
   },
@@ -106,7 +106,7 @@ const useStyles = makeStyles((theme) => ({
       textDecoration: "underline 2px",
       textDecorationColor: theme.palette.gradient,
     },
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("xs")]: {
       fontSize: "25px",
       marginTop: "50px",
       marginLeft: "5%",
@@ -129,7 +129,7 @@ const useStyles = makeStyles((theme) => ({
       color: theme.palette.dark.main,
       cursor: "pointer",
     },
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("xs")]: {
       fontSize: "25px",
       marginTop: "50px",
       marginLeft: "5%",
@@ -138,7 +138,7 @@ const useStyles = makeStyles((theme) => ({
   },
   menuIcon: {
     display: "none",
-    "@media (orientation: portrait)": {
+    [theme.breakpoints.down("xs")]: {
       marginTop: "5px",
       marginRight: "15px",
       display: "block",
@@ -155,13 +155,13 @@ const useStyles = makeStyles((theme) => ({
   },
   menuContainer: {
     display: "none",
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("xs")]: {
       display: "block",
     },
   },
   menuContainerOpen: {
     display: "none",
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("xs")]: {
       display: "block",
     },
     "&::after": {

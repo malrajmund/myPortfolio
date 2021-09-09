@@ -6,6 +6,7 @@ import FacebookIcon from "@material-ui/icons/Facebook";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
+import { Icon } from "@iconify/react";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -148,7 +149,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: "10px",
     width: "2%",
     minHeight: "200px",
-    borderRadius: "10px 0 0 0",
+    borderRadius: "10px 10px 0 0",
     position: "fixed",
   },
   arrowIcon: {
@@ -357,7 +358,7 @@ const Landing = () => {
             md={3}
             lg={3}
             xl={3}
-            style={{ marginBottom: "50px" }}
+            style={{ marginBottom: "100px" }}
           >
             <div className={classes.mediaBlock}>
               <Grid
@@ -369,7 +370,14 @@ const Landing = () => {
                 xl={12}
                 className={classes.media}
               >
-                <GitHubIcon className={classes.mediaIcon} />
+                <a
+                  style={{ color: "white" }}
+                  href='https://github.com/malrajmund'
+                  target='_blank'
+                  rel='noreferrer noopener'
+                >
+                  <GitHubIcon className={classes.mediaIcon} />
+                </a>
               </Grid>
               <Grid
                 item
@@ -380,7 +388,14 @@ const Landing = () => {
                 xl={12}
                 className={classes.media}
               >
-                <LinkedInIcon className={classes.mediaIcon} />
+                <a
+                  style={{ color: "white" }}
+                  href='https://www.linkedin.com/in/rajmund-malec-a76ab3187/'
+                  target='_blank'
+                  rel='noreferrer noopener'
+                >
+                  <LinkedInIcon className={classes.mediaIcon} />
+                </a>
               </Grid>
               <Grid
                 item
@@ -391,7 +406,36 @@ const Landing = () => {
                 xl={12}
                 className={classes.media}
               >
-                <FacebookIcon className={classes.mediaIcon} />
+                <a
+                  style={{ color: "white" }}
+                  href='https://www.facebook.com/rajmund.malec/'
+                  target='_blank'
+                  rel='noreferrer noopener'
+                >
+                  <FacebookIcon className={classes.mediaIcon} />
+                </a>
+              </Grid>
+              <Grid
+                item
+                xs={12}
+                sm={12}
+                md={12}
+                lg={12}
+                xl={12}
+                className={classes.media}
+              >
+                <a
+                  style={{ color: "white" }}
+                  href='https://www.codewars.com/users/Rajm1337/stats'
+                  target='_blank'
+                  rel='noreferrer noopener'
+                >
+                  <Icon
+                    icon='simple-icons:codewars'
+                    width={20}
+                    className={classes.mediaIcon}
+                  />
+                </a>
               </Grid>
             </div>
           </Grid>
