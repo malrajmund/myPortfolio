@@ -110,6 +110,7 @@ const useStyles = makeStyles((theme) => ({
       fontSize: "25px",
       marginTop: "50px",
       marginLeft: "5%",
+      cursor: "default",
       textAlign: "center",
     },
   },
@@ -133,6 +134,7 @@ const useStyles = makeStyles((theme) => ({
       fontSize: "25px",
       marginTop: "50px",
       marginLeft: "5%",
+      cursor: "default",
       textAlign: "center",
     },
   },
@@ -233,32 +235,62 @@ const Navbar = () => {
   const handleScroll = () => {
     const offset = window.scrollY;
     setMenuClicked(false);
-    if (previousScroll <= offset) {
-      setScrolled(true);
-      previousScroll = offset;
+    if (!menuClicked) {
+      if (previousScroll <= offset) {
+        setScrolled(true);
+        previousScroll = offset;
+      } else {
+        setScrolled(false);
+        previousScroll = offset;
+      }
+      if (offset >= vhToPixels(0) && offset < vhToPixels(80)) {
+        setScrolledHome(true);
+      } else {
+        setScrolledHome(false);
+      }
+      if (offset >= vhToPixels(80) && offset < vhToPixels(160)) {
+        setScrolledAbout(true);
+      } else {
+        setScrolledAbout(false);
+      }
+      if (offset >= vhToPixels(160) && offset < vhToPixels(350)) {
+        setScrolledPortfolio(true);
+      } else {
+        setScrolledPortfolio(false);
+      }
+      if (offset >= vhToPixels(350) && offset < vhToPixels(500)) {
+        setScrolledContact(true);
+      } else {
+        setScrolledContact(false);
+      }
     } else {
-      setScrolled(false);
-      previousScroll = offset;
-    }
-    if (offset < vhToPixels(100) && offset < vhToPixels(200)) {
-      setScrolledHome(true);
-    } else {
-      setScrolledHome(false);
-    }
-    if (offset >= vhToPixels(100) && offset < vhToPixels(160)) {
-      setScrolledAbout(true);
-    } else {
-      setScrolledAbout(false);
-    }
-    if (offset >= vhToPixels(160) && offset < vhToPixels(240)) {
-      setScrolledPortfolio(true);
-    } else {
-      setScrolledPortfolio(false);
-    }
-    if (offset >= vhToPixels(240) && offset < vhToPixels(400)) {
-      setScrolledContact(true);
-    } else {
-      setScrolledContact(false);
+      if (previousScroll <= offset) {
+        setScrolled(true);
+        previousScroll = offset;
+      } else {
+        setScrolled(false);
+        previousScroll = offset;
+      }
+      if (offset < vhToPixels(100) && offset < vhToPixels(200)) {
+        setScrolledHome(true);
+      } else {
+        setScrolledHome(false);
+      }
+      if (offset >= vhToPixels(100) && offset < vhToPixels(250)) {
+        setScrolledAbout(true);
+      } else {
+        setScrolledAbout(false);
+      }
+      if (offset >= vhToPixels(250) && offset < vhToPixels(400)) {
+        setScrolledPortfolio(true);
+      } else {
+        setScrolledPortfolio(false);
+      }
+      if (offset >= vhToPixels(400) && offset < vhToPixels(600)) {
+        setScrolledContact(true);
+      } else {
+        setScrolledContact(false);
+      }
     }
   };
 
@@ -378,12 +410,19 @@ const Navbar = () => {
                             ? classes.currentOption
                             : classes.option
                         }
-                        onClick={() =>
-                          window.scrollTo({
-                            top: vhToPixels(160),
-                            behavior: "smooth",
-                          })
-                        }
+                        onClick={() => {
+                          if (!menuClicked) {
+                            window.scrollTo({
+                              top: vhToPixels(160),
+                              behavior: "smooth",
+                            });
+                          } else {
+                            window.scrollTo({
+                              top: vhToPixels(300),
+                              behavior: "smooth",
+                            });
+                          }
+                        }}
                       >
                         Portfolio
                       </span>
@@ -396,12 +435,19 @@ const Navbar = () => {
                             ? classes.currentOption
                             : classes.option
                         }
-                        onClick={() =>
-                          window.scrollTo({
-                            top: vhToPixels(300),
-                            behavior: "smooth",
-                          })
-                        }
+                        onClick={() => {
+                          if (!menuClicked) {
+                            window.scrollTo({
+                              top: vhToPixels(300),
+                              behavior: "smooth",
+                            });
+                          } else {
+                            window.scrollTo({
+                              top: vhToPixels(500),
+                              behavior: "smooth",
+                            });
+                          }
+                        }}
                       >
                         Contact
                       </span>

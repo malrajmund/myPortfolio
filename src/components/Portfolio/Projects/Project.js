@@ -32,11 +32,14 @@ const useStyles = makeStyles((theme) => ({
   },
   description: {
     marginBottom: "15px",
-    color: theme.palette.dark.main,
+    color: "white",
     textAlign: "justify",
     textJustify: "inter-word",
     fontWeight: "500",
     fontSize: "17px",
+    backgroundColor: theme.palette.dark.main,
+    borderRadius: "5px",
+    padding: "10px 30px 10px 30px",
   },
   ref: {
     marginBottom: "15px",
@@ -54,6 +57,24 @@ const useStyles = makeStyles((theme) => ({
   techContainer: {
     marginBottom: "15px",
   },
+  site: {
+    maxWidth: "600px",
+
+    borderRadius: "5px",
+  },
+  siteContainer: {
+    maxWidth: "600px",
+    width: "100%",
+    height: "100%",
+    background: theme.palette.gradient,
+    opacity: ".6",
+    position: "absolute",
+    borderRadius: "5px",
+    "&:hover": {
+      display: "none",
+      cursor: "pointer",
+    },
+  },
 }));
 
 const Project = ({
@@ -64,18 +85,19 @@ const Project = ({
   technologies,
   demo,
   source,
+  site,
   ...props
 }) => {
   const classes = useStyles();
   return (
     <Grid
       container
-      direction='column'
+      direction='row'
       alignItems='flex-start'
       justifyContent='flex-start'
       className={classes.projectContainer}
     >
-      <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+      <Grid item xs={12} sm={12} md={12} lg={12} xl={7}>
         <Grid
           container
           direction='row'
@@ -85,7 +107,7 @@ const Project = ({
           <Grid item xs={1} sm={1} md={1} lg={1} xl={1}>
             <img src={image} alt={"foto"} className={classes.img}></img>
           </Grid>
-          <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+          <Grid item xs={12} sm={12} md={6} lg={6} xl={12}>
             <Grid
               container
               direction='row'
@@ -168,6 +190,18 @@ const Project = ({
             </Grid>
           </Grid>
         </Grid>
+      </Grid>
+      <Grid item xs={12} sm={12} md={12} lg={12} xl={4}>
+        <div
+          className={classes.siteContainer}
+          style={{ width: "600px", height: "300px", marginLeft: "30px" }}
+        ></div>
+        <img
+          src={site}
+          alt={"foto"}
+          className={classes.site}
+          style={{ width: "600px", height: "300px", marginLeft: "30px" }}
+        ></img>
       </Grid>
     </Grid>
   );

@@ -12,6 +12,9 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("xs")]: {
       marginTop: "100%",
     },
+    [theme.breakpoints.only("md")]: {
+      paddingBottom: "100%",
+    },
   },
   title: {
     fontSize: "40px",

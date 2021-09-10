@@ -147,7 +147,7 @@ const About = () => {
                     </ListItem>
                   </List>
                 </Grid>
-                <Grid item xl={6}>
+                <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
                   <List className={classes.technologyList}>
                     <ListItem>
                       <ArrowRightIcon color='secondary' />

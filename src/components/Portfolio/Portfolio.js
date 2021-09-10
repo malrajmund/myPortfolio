@@ -4,6 +4,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Project from "./Projects/Project";
 import fotosoft from "../Resources/img/fotosoft.png";
 import fotorental from "../Resources/img/fotorental.png";
+import fotosoftSite from "../Resources/img/fotosoftSite.PNG";
+import fotorentalSite from "../Resources/img/fotorentalSite.PNG";
 
 const useStyles = makeStyles((theme) => ({
   titleGrid: {
@@ -12,6 +14,9 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.primary.main,
     [theme.breakpoints.down("xs")]: {
       marginTop: "200%",
+    },
+    [theme.breakpoints.only("md")]: {
+      paddingLeft: "20%",
     },
   },
   bar: {
@@ -66,7 +71,7 @@ const Portfolio = () => {
       justifyContent='flex-start'
       className={classes.titleGrid}
     >
-      <Grid item xs={12} sm={12} md={6} lg={6} xl={8}>
+      <Grid item xs={12} sm={12} md={12} lg={6} xl={8}>
         <Grid
           container
           alignItems='center'
@@ -99,7 +104,8 @@ const Portfolio = () => {
                 }
                 technologies={["React", "Redux", "MongoDB", "Express.js"]}
                 demo={"https://fotorental.herokuapp.com/"}
-                source={"google.com"}
+                source={"https://github.com/malrajmund/foto-rental"}
+                site={fotorentalSite}
               />
               <Project
                 image={fotosoft}
@@ -110,7 +116,8 @@ const Portfolio = () => {
                 }
                 technologies={["React", "Redux", "MongoDB", "Express.js"]}
                 demo={"https://k2info.com.pl"}
-                source={"google.com"}
+                source={"https://github.com/malrajmund/FotoSoft"}
+                site={fotosoftSite}
               />
             </div>
           </Grid>
