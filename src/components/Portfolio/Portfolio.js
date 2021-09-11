@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   projectContainer: {
-    float: "right",
+    //float: "right",
   },
 }));
 
@@ -92,7 +92,7 @@ const Portfolio = () => {
               <hr className={classes.underline}></hr>
             </div>
           </Grid>
-          <Grid item xs={12} sm={12} md={12} lg={12} xl={8}>
+          <Grid item xs={12} sm={8} md={12} lg={12} xl={8}>
             {" "}
             <div className={classes.projectContainer}>
               <Project

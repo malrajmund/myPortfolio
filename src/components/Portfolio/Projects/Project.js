@@ -7,7 +7,7 @@ const useStyles = makeStyles((theme) => ({
   projectContainer: {
     marginTop: "20px",
     marginBottom: "50px",
-    marginLeft: "25%",
+    //marginLeft: "25%",
     [theme.breakpoints.down("md")]: {
       marginLeft: "0%",
       paddingLeft: "15px",
@@ -53,26 +53,64 @@ const useStyles = makeStyles((theme) => ({
     verticalAlign: "middle",
     display: "inline-flex",
     color: theme.palette.dark.main,
+    fontSize: "16px",
   },
   techContainer: {
     marginBottom: "15px",
   },
   site: {
     maxWidth: "600px",
-
     borderRadius: "5px",
+    width: "600px",
+    height: "300px",
+    marginLeft: "300px",
+    [theme.breakpoints.down("md")]: {
+      display: "none",
+    },
   },
-  siteContainer: {
-    maxWidth: "600px",
-    width: "100%",
-    height: "100%",
+  siteGradient: {
     background: theme.palette.gradient,
     opacity: ".6",
     position: "absolute",
     borderRadius: "5px",
-    "&:hover": {
+    width: "600px",
+    height: "300px",
+    marginLeft: "300px",
+    animation: `$showGradient 800ms forwards`,
+    [theme.breakpoints.down("md")]: {
       display: "none",
+    },
+    "&:hover": {
       cursor: "pointer",
+      animation: `$hideGradient 800ms forwards`,
+    },
+  },
+  "@keyframes hideGradient": {
+    "0%": {
+      opacity: ".6",
+    },
+    "100%": {
+      opacity: "0",
+    },
+  },
+  "@keyframes showGradient": {
+    "0%": {
+      opacity: "0",
+    },
+    "100%": {
+      opacity: ".6",
+    },
+  },
+  projectItem: {
+    [theme.breakpoints.only("xl")]: {
+      position: "absolute",
+      zIndex: "10",
+      maxWidth: "25%",
+    },
+    [theme.breakpoints.only("lg")]: {
+      position: "absolute",
+      zIndex: "10",
+      maxWidth: "25%",
     },
   },
 }));
@@ -93,11 +131,19 @@ const Project = ({
     <Grid
       container
       direction='row'
-      alignItems='flex-start'
-      justifyContent='flex-start'
+      alignItems='center'
+      justifyContent='center'
       className={classes.projectContainer}
     >
-      <Grid item xs={12} sm={12} md={12} lg={12} xl={7}>
+      <Grid
+        item
+        xs={12}
+        sm={12}
+        md={12}
+        lg={7}
+        xl={7}
+        className={classes.projectItem}
+      >
         <Grid
           container
           direction='row'
@@ -107,7 +153,7 @@ const Project = ({
           <Grid item xs={1} sm={1} md={1} lg={1} xl={1}>
             <img src={image} alt={"foto"} className={classes.img}></img>
           </Grid>
-          <Grid item xs={12} sm={12} md={6} lg={6} xl={12}>
+          <Grid item xs={12} sm={12} md={6} lg={12} xl={12}>
             <Grid
               container
               direction='row'
@@ -170,7 +216,7 @@ const Project = ({
                       sm={6}
                       md={3}
                       lg={3}
-                      xl={3}
+                      xl={6}
                       className={classes.tech}
                     >
                       <ArrowRightIcon color='secondary' />
@@ -180,10 +226,20 @@ const Project = ({
                 </Grid>
               </Grid>
               <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                <a href={demo} className={classes.ref}>
-                  DEMO
+                <a
+                  href={demo}
+                  target='_blank'
+                  rel='noreferrer noopener'
+                  className={classes.ref}
+                >
+                  LIVE
                 </a>{" "}
-                <a href={source} className={classes.ref}>
+                <a
+                  href={source}
+                  target='_blank'
+                  rel='noreferrer noopener'
+                  className={classes.ref}
+                >
                   SOURCE
                 </a>
               </Grid>
@@ -191,17 +247,11 @@ const Project = ({
           </Grid>
         </Grid>
       </Grid>
-      <Grid item xs={12} sm={12} md={12} lg={12} xl={4}>
-        <div
-          className={classes.siteContainer}
-          style={{ width: "600px", height: "300px", marginLeft: "30px" }}
-        ></div>
-        <img
-          src={site}
-          alt={"foto"}
-          className={classes.site}
-          style={{ width: "600px", height: "300px", marginLeft: "30px" }}
-        ></img>
+      <Grid item xs={12} sm={12} md={12} lg={4} xl={4}>
+        <a href={demo} target='_blank' rel='noreferrer noopener'>
+          <div className={classes.siteGradient}></div>
+          <img src={site} alt={"foto"} className={classes.site}></img>
+        </a>
       </Grid>
     </Grid>
   );

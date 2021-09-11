@@ -171,7 +171,7 @@ const About = () => {
       <Grid
         item
         xs={12}
-        sm={4}
+        sm={12}
         md={12}
         lg={12}
         xl={12}

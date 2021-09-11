@@ -295,7 +295,7 @@ const Landing = () => {
                   text='View portfolio'
                   onClick={() =>
                     window.scrollTo({
-                      top: vhToPixels(200),
+                      top: vhToPixels(250),
                       behavior: "smooth",
                     })
                   }

@@ -10,10 +10,7 @@ const useStyles = makeStyles((theme) => ({
     height: "80vh",
     backgroundColor: theme.palette.primary.main,
     [theme.breakpoints.down("xs")]: {
-      marginTop: "100%",
-    },
-    [theme.breakpoints.only("md")]: {
-      paddingBottom: "100%",
+      marginTop: "150%",
     },
   },
   title: {
